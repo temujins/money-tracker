@@ -1,7 +1,8 @@
-const addRecords = require('./addRecords');
+const { addToIncomes, addToExpenses } = require('./addRecords');
 const getRecords = require('./getRecords');
 
 module.exports = {
-  addRecords,
+  addToIncomes,
+  addToExpenses,
   getRecords,
 };

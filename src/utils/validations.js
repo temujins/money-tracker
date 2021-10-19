@@ -1,8 +1,7 @@
 function checkUserData(body = null) {
   if (!body) return console.log('Unable to find data!');
-  console.log('Validation yet to setup 😥');
-
-  return true;
+  if (body.text && body.amount) return true;
+  return false;
 }
 
 module.exports = { checkUserData };
