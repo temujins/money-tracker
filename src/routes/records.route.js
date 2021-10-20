@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const {
-  getRecords,
-  addToIncomes,
-  addToExpenses,
+    getRecords,
+    addToIncomes,
+    addToExpenses,
+    updateIncomeRecord,
+    updateExpenseRecord,
 } = require('../controllers/records-controller');
+const checkRecordData = require('../middleware/checkRecordData');
 
 /**
  * @route /api/v1/record
@@ -40,5 +43,19 @@ router.post('/api/v1/records/add/income', addToIncomes);
  * @func addToExpense()
  */
 router.post('/api/v1/records/add/expense', addToExpenses);
+
+/**
+ * @route /api/v1/records/update/income/:id
+ * @method PUT
+ * @func updateIncomeRecord()
+ */
+router.put('/api/v1/records/update/income/:id', updateIncomeRecord);
+
+/**
+ * @route /api/v1/records/update/expense/:id
+ * @method PUT
+ * @func updateExpenseRecord()
+ */
+router.put('/api/v1/records/update/expense/:id', updateExpenseRecord);
 
 module.exports = router;

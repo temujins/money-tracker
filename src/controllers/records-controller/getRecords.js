@@ -1,50 +1,37 @@
 const { Incomes, Expenses } = require('../../models/record.schema');
+const sendResult = require('../../config/sendResult');
 
 async function all(req, res) {
-  try {
-    const incomes = await Incomes.find({});
-    const expenses = await Expenses.find({});
+    try {
+        const incomes = await Incomes.find({});
+        const expenses = await Expenses.find({});
 
-    res.status(201).json({
-      success: true,
-      records: {
-        incomes,
-        expenses,
-      },
-    });
-  } catch (err) {
-    res.status(404).json({ success: false, error: new Error(err) });
-  }
+        sendResult(res, 201, { success: true, data: { incomes, expenses } });
+    } catch (err) {
+        res.status(404).json({ success: false, error: new Error(err) });
+    }
 }
 
 async function incomes(req, res) {
-  try {
-    const incomes = await Incomes.find({});
-
-    res.status(201).json({
-      success: true,
-      records: incomes,
-    });
-  } catch (err) {
-    res.status(404).json({ success: false, error: new Error(err) });
-  }
+    try {
+        const incomes = await Incomes.find({});
+        sendResult(res, 201, { success: true, data: incomes });
+    } catch (err) {
+        sendResult(res, 404, { error: err });
+    }
 }
 
 async function expenses(req, res) {
-  try {
-    const expenses = Expenses.find({});
-
-    res.status(201).json({
-      success: true,
-      records: expenses,
-    });
-  } catch (err) {
-    res.status(404).json({ success: false, error: new Error(err) });
-  }
+    try {
+        const expenses = await Expenses.find({});
+        sendResult(res, 201, { success: true, data: expenses });
+    } catch (err) {
+        sendResult(res, 404, { error: err });
+    }
 }
 
 module.exports = {
-  all,
-  incomes,
-  expenses,
+    all,
+    incomes,
+    expenses,
 };

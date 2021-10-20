@@ -1,46 +1,33 @@
-const { checkUserData } = require('../../utils/validations');
 const { Incomes, Expenses } = require('../../models/record.schema');
+const sendResult = require('../../config/sendResult');
 
 async function addToIncomes(req, res) {
-  const isValid = checkUserData(req.body);
-
-  if (isValid) {
     const { text, amount } = req.body;
     const income = new Incomes({ text: text, amount: amount });
-    await income.save();
 
-    res.status(201).json({
-      success: true,
-      result: income,
-    });
-    return;
-  }
-
-  res.status(404).json({
-    success: false,
-    error: 'Your input is invalid please provide valid information!',
-  });
+    try {
+        const record = await income.save();
+        sendResult(res, 201, { success: true, data: record });
+    } catch (err) {
+        sendResult(res, {
+            message: 'Unable to save the record. Please try again later',
+            error: err,
+        });
+    }
 }
 
 async function addToExpenses(req, res) {
-  const isValid = checkUserData(req.body);
-
-  if (isValid) {
     const { text, amount } = req.body;
     const expense = new Expenses({ text: text, amount: amount });
-    await expense.save();
-
-    res.status(201).json({
-      success: true,
-      result: expense,
-    });
-    return;
-  }
-
-  res.status(404).json({
-    success: false,
-    error: 'Your input is invalid please provide valid information!',
-  });
+    try {
+        const record = await expense.save();
+        sendResult(res, 201, { success: true, data: record });
+    } catch (err) {
+        sendResult(res, {
+            message: 'Unable to save the record. Please try again later',
+            error: err,
+        });
+    }
 }
 
 module.exports = { addToIncomes, addToExpenses };

@@ -11,6 +11,6 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(config.PORT, () => {
-  connectToDb();
-  console.log(`Server running on ${config.PORT}`);
+    connectToDb();
+    console.log(`Server running on ${config.PORT}`);
 });
