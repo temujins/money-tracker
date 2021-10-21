@@ -1,5 +1,21 @@
+import React from 'react';
+import { Incomes, Expenses, AddExpense, AddIncome } from './components';
+import { LoadingProvider, RecordsProvider } from './contexts';
+
 function App() {
-  return <div id='app-wrapper'></div>;
+    return (
+        <LoadingProvider>
+            <RecordsProvider>
+                <Incomes />
+                <br />
+                <Expenses />
+                <br />
+                <AddIncome />
+                <br />
+                <AddExpense />
+            </RecordsProvider>
+        </LoadingProvider>
+    );
 }
 
 export default App;
