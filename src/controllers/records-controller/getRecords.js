@@ -1,5 +1,5 @@
 const { Incomes, Expenses } = require('../../models/record.schema');
-const sendResult = require('../../config/sendResult');
+const sendResult = require('../../utils/sendResult');
 
 async function all(req, res) {
     try {

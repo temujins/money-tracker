@@ -1,5 +1,5 @@
 const { Incomes, Expenses } = require('../../models/record.schema');
-const sendResult = require('../../config/sendResult');
+const sendResult = require('../../utils/sendResult');
 
 async function findAndUpdate(req, res, model) {
     await model.findByIdAndUpdate(req.params.id, {

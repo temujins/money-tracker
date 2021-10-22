@@ -1,7 +1,7 @@
-const sendStatus = require('../config/sendResult');
+const sendResult = require('../utils/sendResult');
 
 function healthCheckController(req, res) {
-    sendStatus(res, 200, { success: true, message: 'Server is running' });
+    sendResult(res, 200, { success: true, message: 'Server is running' });
 }
 
 module.exports = healthCheckController;

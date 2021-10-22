@@ -1,0 +1,43 @@
+.records {
+    width: 100%;
+    height: max-content;
+
+    .title {
+        width: 100%;
+        text-align: left;
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding: 0.4rem 1rem;
+    }
+}
+
+.records-table {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    .table-data {
+        width: 100%;
+        padding: 0.4rem 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+
+        &-text {
+            font-weight: 600;
+
+            &::first-letter {
+                text-transform: uppercase;
+            }
+        }
+
+        &-amount {
+            font-size: 1.4rem;
+            margin: 0.8rem 0;
+        }
+    }
+}

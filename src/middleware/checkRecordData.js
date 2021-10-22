@@ -1,4 +1,4 @@
-const sendResult = require('../config/sendResult');
+const sendResult = require('../utils/sendResult');
 
 function checkRecordData(req, res, next) {
     if (

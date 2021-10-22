@@ -1,5 +1,5 @@
 const { Incomes, Expenses } = require('../models/record.schema');
-const sendResult = require('../config/sendResult');
+const sendResult = require('../utils/sendResult');
 
 function sendError(res) {
     sendResult(res, 404, {
